@@ -28,7 +28,7 @@ describe("появление подсказки", () => {
     });
     page = await browser.newPage();
   });
-  
+
   afterAll(async () => {
     await browser.close();
     server.kill();
@@ -40,7 +40,7 @@ describe("появление подсказки", () => {
     await page.waitForSelector("body");
   });
 
-  test("проверка на показ подсказки", async () => {
+  test("проверка на показ кнопки", async () => {
     await page.goto(baseUrl);
 
     await page.waitForSelector(".btn");
@@ -49,12 +49,10 @@ describe("появление подсказки", () => {
   test("тест на добавление класса tooltip-wrapper", async () => {
     await page.goto(baseUrl);
 
-    // await page.waitForSelector(".btn");
-
     const button = await page.$(".btn");
 
     await button.click();
 
     await page.waitForSelector(".tooltip-wrapper");
-  }, 30000);  
+  }, 30000);
 });
