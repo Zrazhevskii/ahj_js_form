@@ -4,7 +4,6 @@ export default class Tooltip {
   }
 
   addTooltip(element) {
-
     const tooltipWrap = document.createElement("div");
     tooltipWrap.classList.add("tooltip-wrapper");
 
