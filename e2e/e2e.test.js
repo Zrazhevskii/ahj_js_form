@@ -1,6 +1,6 @@
-import puppetteer from "puppeteer";
-// import { fork } from "child_process";
-const childProcess = require('child_process');
+import puppeteer from "puppeteer";
+import { fork } from "child_process";
+// const childProcess = require("child_process");
 
 jest.setTimeout(30000);
 
@@ -11,7 +11,7 @@ describe("появление подсказки", () => {
   const baseUrl = "http://localhost:9000";
 
   beforeAll(async () => {
-    server = await childProcess.fork(`${__dirname}/e2e.server.js`);
+    server = await fork(`${__dirname}/e2e.server.js`);
     await new Promise((resolve, reject) => {
       server.on("error", reject);
       server.on("message", (message) => {
@@ -21,14 +21,14 @@ describe("появление подсказки", () => {
       });
     });
 
-    browser = await puppetteer.launch({
+    browser = await puppeteer.launch({
       headless: false,
       slowMo: 100,
-      devtools: true,
+      devtools: false,
     });
     page = await browser.newPage();
   });
-
+  
   afterAll(async () => {
     await browser.close();
     server.kill();
@@ -56,6 +56,5 @@ describe("появление подсказки", () => {
     await button.click();
 
     await page.waitForSelector(".tooltip-wrapper");
-  }, 30000);
-
+  }, 30000);  
 });
