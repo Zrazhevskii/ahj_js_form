@@ -4,16 +4,14 @@ export default class Tooltip {
   }
 
   addTooltip(element) {
-    //tooltipWrap
+
     const tooltipWrap = document.createElement("div");
     tooltipWrap.classList.add("tooltip-wrapper");
 
-    //tooltipTitle
     const tooltipTitle = document.createElement("h3");
     tooltipTitle.classList.add("tooltip-title");
     tooltipTitle.textContent = "Tooltip title";
 
-    //tooltipText
     const tooltipText = document.createElement("div");
     tooltipText.classList.add("tooltip-text");
     tooltipText.textContent =
